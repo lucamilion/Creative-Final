@@ -6,6 +6,7 @@ var app = new Vue({
     title: "",
     file: null,
     addedGame: null,
+    show: false,
     minPlayers: 2,
     maxPlayers: 6,
     time: 90,
@@ -14,16 +15,6 @@ var app = new Vue({
   methods: {
     fileChanged(event) {
       this.file = event.target.files[0];
-    },
-    async getItems() {
-      try {
-        let response = await axios.get("/api/items");
-        this.items = response.data;
-        return true;
-      }
-      catch (error) {
-        console.log(error);
-      }
     },
     async addGame() {
       try {
@@ -39,6 +30,7 @@ var app = new Vue({
           recommendingUser: this.recommendingUser,
         });
         this.addedGame = r2.data;
+        this.show=true;
       }
       catch (error) {
         console.log(error);

@@ -25,11 +25,6 @@ const upload = multer({
   }
 });
 
-// Setup schema
-const itemSchema = new mongoose.Schema({
-  title: String,
-  path: String,
-});
 
 const gameSchema = new mongoose.Schema({
   title: String,
@@ -39,9 +34,6 @@ const gameSchema = new mongoose.Schema({
   time: Number,
   recommendingUser: String
 })
-
-// Create a model for items in the museum.
-const Item = mongoose.model('Item', itemSchema);
 
 const Game = mongoose.model('Game', gameSchema);
 
@@ -58,22 +50,6 @@ app.post('/api/photos', upload.single('photo'), async(req, res) => {
 });
 
 app.listen(3001, () => console.log('Server listening on port 3001!'));
-
-//post route for adding stuff
-app.post('/api/items', async(req, res) => {
-  const item = new Item({
-    title: req.body.title,
-    path: req.body.path,
-  });
-  try {
-    await item.save();
-    res.send(item);
-  }
-  catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
 
 app.post('/api/games', async(req, res) => {
   const game = new Game({
@@ -94,36 +70,10 @@ app.post('/api/games', async(req, res) => {
   }
 });
 
-// Get a list of all of the items in the museum.
-app.get('/api/items', async(req, res) => {
-  try {
-    let items = await Item.find();
-    res.send(items);
-  }
-  catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
-
 app.get('/api/games', async(req, res) => {
   try {
     let games = await Game.find();
     res.send(games);
-  }
-  catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
-app.post('/api/rate', async(req, res) => {
-
-  var query = { "title": req.tile }
-  try {
-    Game.findOneAndUpdate(query, req.newData, { upsert: false }, function(err, doc) {
-      if (err) return res.send(500, { error: err })
-      return res.send("sunshine and rainbows")
-    })
   }
   catch (error) {
     console.log(error);

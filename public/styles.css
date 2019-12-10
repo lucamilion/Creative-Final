@@ -4,28 +4,25 @@ body {
   background: #fff;
   padding: 0px;
   margin: 0px;
+  text-align: center
 }
 
 /* Header */
 
 .header {
-  display: flex;
-  padding: 20px 100px 0px 100px;
+  padding: 10px 100px 10px 100px;
   background-color: #32ad53;
   color: #fff;
+  text-align: center
 }
 
 .title {
-  margin-top: 10px;
+  margin: 10px;
 }
 
 .title h1,
 .title h2 {
   margin: 0px;
-}
-
-.title h1 {
-  border-top: 1px solid #000;
 }
 
 /* Footer */
@@ -138,11 +135,12 @@ html {
 .image {
   margin: 0 0 1.5em;
   display: inline-block;
-  width: 100%;
+  width: 51%;
 }
 
 .image img {
-  width: 100%;
+  max-width: 51%;
+  max-height: 400px;
 }
 
 /* Masonry on large screens */

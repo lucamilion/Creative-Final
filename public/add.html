@@ -4,7 +4,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
-  <title>Museum of Ordinary Objects</title>
+  <title>Add a Game</title>
 </head>
 
 <body>
@@ -23,9 +23,9 @@
       </div>
       <div class="upload" v-if="addedGame">
         <h2>{{addedGame.title}}</h2>
-        <p>{{game.minPlayers}} - {{game.maxPlayers}} players</p>
-        <p>Recommended by {{game.recommendingUser}}</p>
-        <p>Avg game time - {{game.time}} minutes</p>
+        <p>{{addedGame.minPlayers}} - {{addedGame.maxPlayers}} players</p>
+        <p>Recommended by {{addedGame.recommendingUser}}</p>
+        <p>Avg game time - {{addedGame.time}} minutes</p>
         <img :src="addedGame.imgPath" />
       </div>
     </div>
