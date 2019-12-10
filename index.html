@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <title>WoM Board Game Recomendations</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="title">
+      <h2>'Word of Mouth' Recomendations</h2>
+      <h1>Board Games</h1>
+    </div>
+  </div>
+  <div id="app" class="content">
+    <input v-model="playerFilter" placeholder="#players">
+    <input v-model="timeFilter" placeholder="Max time In Minutes">
+    <input v-model="recommendFilter" placeholder="recommender">
+    <section class="image-gallery">
+      <div class="image" v-for="game in filteredGames">
+        <!-- <div v-if="(!playerFilter) || (game.minPlayers <= playerFilter && game.maxPlayers >= playerFilter)"> -->
+        <h2>{{game.title}}</h2>
+        <p>{{game.minPlayers}} - {{game.maxPlayers}} players</p>
+        <p>Recommended by {{game.recommendingUser}}</p>
+        <p>Avg game time - {{game.time}} minutes</p>
+        <img :src="game.imgPath" />
+        <!--</div> -->
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    <a href="add.html">Add a Game</a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Museum of Ordinary Objects</title>
+</head>
+
+<body>
+  <div id="add" class="content">
+    <h1>Add A Game</h1>
+    <div class="add">
+      <div class="form">
+        <input v-model="title" placeholder="Title">
+        <input v-model="minPlayers" placeholder="min">
+        <input v-model="maxPlayers" placeholder="max">
+        <input v-model="time" placeholder="time (avg. minutes)">
+        <input v-model="recommendingUser" placeholder="username">
+        <p></p>
+        <input type="file" name="photo" @change="fileChanged">
+        <button @click="addGame">Add Game</button>
+      </div>
+      <div class="upload" v-if="addedGame">
+        <h2>{{addedGame.title}}</h2>
+        <p>{{game.minPlayers}} - {{game.maxPlayers}} players</p>
+        <p>Recommended by {{game.recommendingUser}}</p>
+        <p>Avg game time - {{game.time}} minutes</p>
+        <img :src="addedGame.imgPath" />
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/add.js"></script>
+</body>
+
+</html>
